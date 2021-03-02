@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package dev.honwakalab.vigesimal.lib.shared
 
 import com.ionspin.kotlin.bignum.decimal.BigDecimal
