@@ -25,7 +25,9 @@ jobs:
           java-version: 1.8
       - name: Generate AAR
         run: |
-          ./library/gradlew :shared:build
+          cd ./library
+          ./gradlew :shared:build
+          cd ..
           cp ./library/shared/outputs/aar/shared-release.aar ./android/app/libs/vigesimal.aar
       - name: Create Pull Request
         id: cpr
