@@ -29,14 +29,14 @@ private val MAPPING_VIGESIMAL: Map<String, Int> = mapOf(
 )
 
 object VigesimalConverter {
-    fun toDecimal(vigesimal: String): String {
+    fun toDecimal(vigesimal: String): BigDecimal {
         val length = vigesimal.length - 1
         return vigesimal.mapIndexed { index, c ->
             val decimal = MAPPING_VIGESIMAL[c.toString()] ?: throw IllegalArgumentException("$c")
             val bigDecimal = BigDecimal(decimal)
             val powOf86 = BigDecimal(20).pow(length - index)
             return@mapIndexed (bigDecimal * powOf86)
-        }.sumOf { it }.toPlainString()
+        }.sumOf { it }
     }
 
     fun toVigesimal(): String {
