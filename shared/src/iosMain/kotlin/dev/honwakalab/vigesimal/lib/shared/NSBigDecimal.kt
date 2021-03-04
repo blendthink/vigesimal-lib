@@ -16,7 +16,5 @@ actual class BigDecimal actual constructor(intVal: Int) : NSDecimalNumber(intVal
     actual fun pow(n: Int): BigDecimal =
         this.decimalNumberByRaisingToPower(n.toULong()) as BigDecimal
 
-    actual fun toPlainString(): String = this.stringValue
-
     override fun compareTo(other: BigDecimal): Int = this.compareTo(other)
 }
