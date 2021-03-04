@@ -28,7 +28,7 @@ jobs:
           cd ./library
           ./gradlew :shared:bundleReleaseAar
           cd ..
-          cp ./library/shared/build/outputs/aar/shared-release.aar ./android/app/libs/vigesimal.aar
+          cp -f ./library/shared/build/outputs/aar/shared-release.aar ./android/app/libs/vigesimal.aar
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
