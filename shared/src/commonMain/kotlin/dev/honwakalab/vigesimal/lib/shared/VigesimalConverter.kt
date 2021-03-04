@@ -41,8 +41,8 @@ object VigesimalConverter {
         }.sumOf { it }
     }
 
-    fun toVigesimal() {
-
+    fun toVigesimal(): String {
+        return "vigesimal"
     }
 }
 
