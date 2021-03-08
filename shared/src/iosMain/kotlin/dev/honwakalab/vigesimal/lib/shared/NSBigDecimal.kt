@@ -4,17 +4,31 @@ package dev.honwakalab.vigesimal.lib.shared
 
 import platform.Foundation.NSDecimalNumber
 
-actual class BigDecimal actual constructor(intVal: Int) : NSDecimalNumber(intVal),
-    Comparable<BigDecimal> {
+actual class BigDecimal : Comparable<BigDecimal> {
+    private val decimalNumber: NSDecimalNumber
 
-    actual fun add(augend: BigDecimal): BigDecimal =
-        this.decimalNumberByAdding(augend) as BigDecimal
+    actual constructor(intVal: Int) {
+        decimalNumber = NSDecimalNumber(intVal)
+    }
 
-    actual fun multiply(multiplicand: BigDecimal): BigDecimal =
-        this.decimalNumberByMultiplyingBy(multiplicand) as BigDecimal
+    private constructor(nsDecimalNumber: NSDecimalNumber) {
+        decimalNumber = nsDecimalNumber
+    }
 
-    actual fun pow(n: Int): BigDecimal =
-        this.decimalNumberByRaisingToPower(n.toULong()) as BigDecimal
+    actual fun add(augend: BigDecimal): BigDecimal {
+        val tmp = decimalNumber.decimalNumberByAdding(augend.decimalNumber)
+        return BigDecimal(tmp)
+    }
+
+    actual fun multiply(multiplicand: BigDecimal): BigDecimal {
+        val tmp = decimalNumber.decimalNumberByMultiplyingBy(multiplicand.decimalNumber)
+        return BigDecimal(tmp)
+    }
+
+    actual fun pow(n: Int): BigDecimal {
+        val tmp = decimalNumber.decimalNumberByRaisingToPower(n.toULong())
+        return BigDecimal(tmp)
+    }
 
     override fun compareTo(other: BigDecimal): Int = this.compareTo(other)
 }
