@@ -1,4 +1,4 @@
-@file:Suppress("EXPERIMENTAL_API_USAGE")
+@file:Suppress("EXPERIMENTAL_API_USAGE", "unused")
 
 package dev.honwakalab.vigesimal.lib.shared
 
@@ -29,6 +29,8 @@ actual class BigDecimal : Comparable<BigDecimal> {
         val tmp = decimalNumber.decimalNumberByRaisingToPower(n.toULong())
         return BigDecimal(tmp)
     }
+
+    actual fun toPlainString(): String = decimalNumber.stringValue
 
     override fun compareTo(other: BigDecimal): Int = this.compareTo(other)
 }
