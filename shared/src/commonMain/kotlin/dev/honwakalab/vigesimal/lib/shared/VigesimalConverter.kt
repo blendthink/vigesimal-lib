@@ -29,6 +29,8 @@ private val MAPPING_VIGESIMAL: Map<String, Int> = mapOf(
 )
 
 object VigesimalConverter {
+
+    @Throws(exceptionClasses = [IllegalArgumentException::class])
     fun toDecimal(vigesimal: String): BigDecimal {
         val length = vigesimal.length - 1
         return vigesimal.mapIndexed { index, c ->
